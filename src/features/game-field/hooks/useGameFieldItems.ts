@@ -4,7 +4,7 @@ import type { Coordinates } from '@dnd-kit/utilities';
 import { IGameItemPosition } from '@/types/gameItem';
 import { GAME_ITEM_TYPES, GAME_ITEM_SIZE } from '@/constants/gameItem';
 import { PAGE_HEADER_HEIGHT } from '@/constants/pageHeader';
-import { TGameFieldItem } from '../types';
+import { TGameFieldCreatedItem } from '../types';
 
 /** Hook to store game field' items and spawn a new one */
 export const useGameFieldItems = () => {
@@ -14,7 +14,7 @@ export const useGameFieldItems = () => {
    * To update an item I had to remove it from the array and place it back with updated position.
    * I think it's not efficient, especially when there are many items. So I decided to use an object with unique keys.
    */
-  const [items, setItems] = useState<TGameFieldItem>({});
+  const [items, setItems] = useState<TGameFieldCreatedItem>({});
 
   /** Spawn item at the click position */
   const spawnItem = useCallback((clickPosition: IGameItemPosition) => {
