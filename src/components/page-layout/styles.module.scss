@@ -105,6 +105,12 @@
 }
 
 /* DESKTOP STYLES */
+
+/* 
+  NOTE
+  1. There is probably a better way to do responsive styles in SASS, but for now I used a classic one like this.
+  2. I used min-width instead of max-width because it's considered as a better practice (mobile-first design).
+*/
 @media (min-width: 769px) {
   .header {
     padding: 0 20px;
