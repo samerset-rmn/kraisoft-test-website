@@ -1,25 +1,20 @@
 import { useDraggable } from '@dnd-kit/core';
-import { CSS } from '@dnd-kit/utilities';
+import { memo } from 'react';
 
-interface IGameItemContainerProps {
-  id: string;
-}
+import { IGameItemContainerProps } from './types';
+import { GameItem } from './game-item';
 
-export const GameItemContainer: React.FC<IGameItemContainerProps> = ({ id }) => {
-  const { attributes, listeners, setNodeRef, transform } = useDraggable({
-    id
+/**
+ * Draggable item for the game field
+ *
+ * NOTE memo is used to prevent unnecessary re-renders when spawning new items
+ */
+export const GameItemContainer: React.FC<IGameItemContainerProps> = memo((props) => {
+  const { attributes, listeners, setNodeRef, transform, isDragging } = useDraggable({
+    id: props.id
   });
 
-  const style = {
-    border: '1px solid black',
-    padding: '20px',
-    maxWidth: 'max-content',
-    transform: CSS.Translate.toString(transform)
-  };
+  return <GameItem {...props} ref={setNodeRef} transform={transform} listeners={listeners} attributes={attributes} isDragging={isDragging} />;
+});
 
-  return (
-    <div ref={setNodeRef} style={style} {...listeners} {...attributes}>
-      GameItemContainer
-    </div>
-  );
-};
+GameItemContainer.displayName = 'GameItemContainer';

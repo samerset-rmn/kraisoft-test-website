@@ -1,0 +1,22 @@
+@keyframes appearing {
+  from {
+    opacity: 0;
+    transform: translate(-50vw, -50vh);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+.item {
+  position: absolute;
+  border: 1px solid gray;
+  overflow: hidden;
+  border-radius: 8px;
+  // animation: appearing 0.25s ease forwards;
+  /* NOTE Remove empty space under the image */
+  line-height: 0;
+  /* NOTE Disable image selection */
+  user-select: none;
+}
