@@ -1,8 +1,8 @@
 import { SITE_BASE_PATH } from './basePath';
-import { IGameItemType } from '@/types/gameItemType';
+import { IGameItem } from '@/types/gameItem';
 
 /** Types of items that can be spawned on the game field */
-export const GAME_ITEM_TYPES: IGameItemType[] = [
+export const GAME_ITEM_TYPES: IGameItem[] = [
   {
     id: 'moon',
     image: {

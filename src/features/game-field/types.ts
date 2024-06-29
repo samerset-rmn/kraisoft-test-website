@@ -1,10 +1,13 @@
-import { IGameItemPosition } from '@/types/gameItemType';
+import { IGameItemPosition, IGameItem } from '@/types/gameItem';
 
-export interface IGameItemParams {
-  id: string;
-  image: string;
-}
+type TGameFieldItemUniqueKey = string;
+export type TGameFieldItem = Record<
+  TGameFieldItemUniqueKey,
+  {
+    id: TGameFieldItemUniqueKey;
+  } & Omit<IGameItem, 'id'>
+>;
 
 export type IGameFieldProps = {
-  onClick: (position: IGameItemPosition) => void;
+  onClick: (cursorPosition: IGameItemPosition) => void;
 };

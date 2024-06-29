@@ -20,6 +20,14 @@ import { IGameFieldProps } from './types';
 
 /** NOTE dnd-kit way to prevent item from being dragged out of parent's boundary */
 const modifiers = [restrictToParentElement];
+/**
+ * NOTE Preloading images so user will not see empty item when it's spawned.
+ * Sure, next/image supports "priority" prop that does the same thing,
+ * but I think here we have a better control, what to preload. For now there are
+ * only 4 item types (4 images), but if there are much more then preloading will slow down
+ * the page load. With this solution we can later write a logic to preload only the next items, for example.
+ */
+const itemImagesPreloadTags = GAME_ITEM_TYPES.map(({ image, id }) => <link key={id} rel='preload' as='image' href={image.small} />);
 
 /**
  * Game field where items can be spawned and dragged
@@ -39,8 +47,8 @@ const modifiers = [restrictToParentElement];
  * [react-beautiful-dnd](https://github.com/atlassian/react-beautiful-dnd) is made by Attlasian, but has a big bundle size.
  *
  * [dnd-kit](https://github.com/clauderic/dnd-kit) looks like a good choice. It has support for touch and keyboard events,
- * has a low bundle size (also modular and tree shakeable), well maintained and flexible enough for custom logic. For now
- * I'll stick with this library.
+ * has a small bundle size (also modular and tree-shakeable), is well maintained, can potentially be framework agnostic,
+ * finally it's flexible enough for custom logic. For now I'll stick with this library.
  */
 export const GameFieldContainer: React.FC = () => {
   const { items, spawnItem, saveItemPosition } = useGameFieldItems();
@@ -52,37 +60,27 @@ export const GameFieldContainer: React.FC = () => {
 
   const onGameItemDragEnd = useCallback(
     ({ delta, active }: DragEndEvent) => {
-      saveItemPosition({
-        id: active.id as string, // NOTE dnd-kit id type can be number, but we know that it's always a string
-        delta
-      });
+      /**
+       * NOTE ID from DragEndEvent is not a generic, sp it's always string | number.
+       * I cast type because we know that our ID is a string.
+       */
+      saveItemPosition({ id: active.id as string, delta });
     },
     [saveItemPosition]
   );
   const onGameFieldClick = useCallback<IGameFieldProps['onClick']>(
-    (position) => {
-      spawnItem(position);
+    (cursorPosition) => {
+      spawnItem(cursorPosition);
     },
     [spawnItem]
   );
 
   return (
     <>
-      <Head>
-        {/**
-         * NOTE Preloading images so user will not see empty item when it's spawned.
-         * Sure, next/image supports "priority" prop that does the same thing,
-         * but I think here we have a better control, what to preload. For now there are
-         * only 4 item types (4 images), but if there are more then preloading will slow down
-         * the page load. Then we can write a logic to preload only next items, for example.
-         */}
-        {GAME_ITEM_TYPES.map(({ id, image }) => (
-          <link key={id} rel='preload' as='image' href={image.small} />
-        ))}
-      </Head>
+      <Head>{itemImagesPreloadTags}</Head>
       <DndContext sensors={sensors} modifiers={modifiers} onDragEnd={onGameItemDragEnd}>
         <GameField onClick={onGameFieldClick}>
-          {items.map((item) => (
+          {Object.values(items).map((item) => (
             <GameItemContainer {...item} key={item.id} />
           ))}
         </GameField>
