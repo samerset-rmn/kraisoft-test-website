@@ -1,0 +1,5 @@
+.container {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px), linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+  background-size: max(calc(100vw / 30), 20px) max(calc(100vw / 30), 20px);
+  background-color: #ffffff;
+}
