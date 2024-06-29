@@ -1,5 +1,5 @@
-import { SiteMetaInformation } from '@/shared/SiteMetaInformation';
-import { PageLayout } from '@/shared/PageLayout';
+import { SiteMetaInformation } from '@/components/site-meta-information';
+import { PageLayout } from '@/components/page-layout';
 
 export default function Home() {
   return (
