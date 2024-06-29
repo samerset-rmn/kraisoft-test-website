@@ -1,6 +1,4 @@
 import { IGameFieldProps } from './types';
-import { GAME_ITEM_SIZE } from '@/constants/gameItem';
-import { PAGE_HEADER_HEIGHT } from '@/constants/pageHeader';
 
 import styles from './styles.module.scss';
 
