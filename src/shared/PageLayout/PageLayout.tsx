@@ -1,28 +1,51 @@
 import { SITE_BASE_PATH } from '@/constants/basePath';
 import Image from 'next/image';
+import styles from './styles.module.scss';
+import Link from 'next/link';
 
 /**
  * Base layout of page
- * 
+ *
  * NOTE: Header and footer can be separated into their own components, but for now it's just a simple layout
  */
 export const PageLayout: React.FC<React.PropsWithChildren> = ({ children }) => {
   return (
-    <div>
-      <header>
-        <div>
-          <Image src={`${SITE_BASE_PATH}/logo.svg`} alt='game.play logo' width={40} height={40} />
+    <div className={styles.container}>
+      <header className={styles.header}>
+        <div className={styles.header_logo}>
+          <Link href='/'>
+            <Image src={`${SITE_BASE_PATH}/logo.svg`} alt='game.play logo' width={35} height={35} priority />
+            game.play
+          </Link>
         </div>
-        <nav>
+        {/* 
+          NOTE: Current navbar contains only 1 item therefore we don't need to implement responsive design.
+          I'd implement burger menu for mobile devices if needed.
+        */}
+        <nav className={styles.header_navigation_bar}>
           <ul>
-            <li>Main page</li>
-            <li>Contact us</li>
+            <li>
+              <Link href='/contact'>Contact us</Link>
+            </li>
           </ul>
         </nav>
       </header>
-      <main>{children}</main>
-      <footer>
-        <div>some info</div>
+
+      <main className={styles.main_content}>{children}</main>
+
+      <footer className={styles.footer}>
+        <p className={styles.footer_text}>We hope you enjoy our game! 🌟</p>
+        <nav className={styles.footer_navigation_bar}>
+          <ul>
+            <li>
+              <Link href='/'>Main page</Link>
+            </li>
+            <li>
+              <Link href='/contact'>Contact us</Link>
+            </li>
+          </ul>
+        </nav>
+        <small className={styles.footer_copyright}>© game.play 2024</small>
       </footer>
     </div>
   );

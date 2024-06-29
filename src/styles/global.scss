@@ -1,0 +1,23 @@
+@use 'mixins.scss' as m;
+
+@include m.normalize;
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  height: 100%;
+  font-family: Arial;
+}
+
+body {
+  height: 100%;
+}
+
+body > *:first-child {
+  height: 100%;
+}

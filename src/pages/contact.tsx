@@ -1,12 +1,12 @@
 import { SiteMetaInformation } from '@/shared/SiteMetaInformation';
 import { PageLayout } from '@/shared/PageLayout';
 
-export default function Home() {
+export default function Contact() {
   return (
     <>
-      <SiteMetaInformation pageTitle='Main page' />
+      <SiteMetaInformation pageTitle='Contact us' />
       <PageLayout>
-        <div>bla bla</div>
+        <div>contact u</div>
       </PageLayout>
     </>
   );

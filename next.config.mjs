@@ -1,6 +1,11 @@
+import { dirname } from 'path';
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  sassOptions: {
+    includePaths: [dirname('styles')]
+  },
   /**
    * NOTE: GitHub Pages does not support server-side code. Therefore we need to set the build type to a static site.
    *
