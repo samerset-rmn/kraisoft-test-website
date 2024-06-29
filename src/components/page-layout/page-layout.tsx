@@ -2,9 +2,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { SITE_BASE_PATH } from '@/constants/basePath';
+import { PAGE_HEADER_HEIGHT } from '@/constants/pageHeader';
 
 import styles from './styles.module.scss';
-
 
 /**
  * Base layout of page
@@ -14,7 +14,7 @@ import styles from './styles.module.scss';
 export const PageLayout: React.FC<React.PropsWithChildren> = ({ children }) => {
   return (
     <div className={styles.container}>
-      <header className={styles.header}>
+      <header className={styles.header} style={{ height: PAGE_HEADER_HEIGHT }}>
         <div className={styles.header_logo}>
           <Link href='/'>
             <Image src={`${SITE_BASE_PATH}/logo.svg`} alt='game.play logo' width={35} height={35} priority />
@@ -34,7 +34,9 @@ export const PageLayout: React.FC<React.PropsWithChildren> = ({ children }) => {
         </nav>
       </header>
 
-      <main className={styles.main_content}>{children}</main>
+      <main className={styles.main_content} style={{ minHeight: `calc(100vh - ${PAGE_HEADER_HEIGHT}px)` }}>
+        {children}
+      </main>
 
       <footer className={styles.footer}>
         <p className={styles.footer_text}>We hope you enjoy our game! 🌟</p>
