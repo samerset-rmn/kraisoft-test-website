@@ -1,7 +1,10 @@
-import { SITE_BASE_PATH } from '@/constants/basePath';
 import Image from 'next/image';
-import styles from './styles.module.scss';
 import Link from 'next/link';
+
+import { SITE_BASE_PATH } from '@/constants/basePath';
+
+import styles from './styles.module.scss';
+
 
 /**
  * Base layout of page

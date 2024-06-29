@@ -1,4 +1,5 @@
 import Head from 'next/head';
+
 import { SITE_BASE_PATH } from '@/constants/basePath';
 
 const faviconList = [
