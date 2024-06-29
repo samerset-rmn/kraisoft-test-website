@@ -1,6 +1,6 @@
-@use 'mixins.scss' as m;
+@use 'mixins';
 
-@include m.normalize;
+@include mixins.normalize;
 
 * {
   box-sizing: border-box;

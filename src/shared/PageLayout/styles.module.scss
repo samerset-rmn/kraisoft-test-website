@@ -1,3 +1,5 @@
+@use '../../styles/variables';
+
 $header-height-desktop: 60px;
 $header-height-mobile: 40px;
 
@@ -42,7 +44,7 @@ $header-height-mobile: 40px;
 
       &:hover,
       &:focus {
-        color: #ff3d3d;
+        color: variables.$accent_color;
       }
     }
   }
@@ -95,7 +97,7 @@ $header-height-mobile: 40px;
 
       &:hover,
       &:focus {
-        color: #ff3d3d;
+        color: variables.$accent_color;
       }
     }
   }
