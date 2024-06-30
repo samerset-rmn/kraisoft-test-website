@@ -15,6 +15,7 @@ export const ContactFormContainer = () => {
   });
 
   const onFormSubmit = formContext.handleSubmit(async (data) => {
+    /* NOTE We don't have to worry about sanitizing the data because react-hook-form does that for us. */
     console.log(data);
 
     /* Fake request */
