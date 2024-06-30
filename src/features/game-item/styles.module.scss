@@ -14,11 +14,15 @@
   border: 1px solid gray;
   overflow: hidden;
   border-radius: 8px;
-  // animation: appearing 0.25s ease forwards;
   /* NOTE Remove empty space under the image */
   line-height: 0;
   /* NOTE Disable image selection */
   user-select: none;
+  /* NOTE The main trick is to not use "forwards" keyword. Animation plays and we still can change "transform" later ("forwards" blocks it). */
+  opacity: 1;
+  transform: translate(0, 0);
+  animation: appearing 0.25s ease;
+
   /* NOTE Possible optiomization, but top/left properties only change after dragging, so probably not a big deal (disabled) */
   // will-change: top, left;
 }
