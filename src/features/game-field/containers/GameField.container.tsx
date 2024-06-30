@@ -64,7 +64,12 @@ export const GameFieldContainer: React.FC = () => {
         <GameField ref={gameFieldRef} onClick={onGameFieldClick}>
           {/* NOTE Place controls in front of game items so that users can access them more quickly using the keyboard (without having to tab on each spawn item) */}
           <GameFieldControlsWrapper>
-            <GameFieldControlButton label='Clear all items' onClick={clearItems} icon={`${SITE_BASE_PATH}/refresh.svg`} />
+            <GameFieldControlButton
+              label='Clear all items'
+              onClick={clearItems}
+              icon={`${SITE_BASE_PATH}/refresh.svg`}
+              testId='game-field-clear-button'
+            />
           </GameFieldControlsWrapper>
 
           {Object.values(items).map((item) => (

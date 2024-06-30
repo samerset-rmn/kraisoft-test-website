@@ -20,7 +20,7 @@ export const FormFieldContainer: React.FC<IFormFieldContainerProps> = ({ name, l
 
   return (
     <FormFieldWrapper label={label} error={fieldState.error?.message}>
-      <Input field={field} type={type} placeholder={placeholder} isError={!!fieldState.error?.message} />
+      <Input field={field} type={type} placeholder={placeholder} isError={!!fieldState.error?.message} testId={`contact-us-form-${name}-field`} />
     </FormFieldWrapper>
   );
 };

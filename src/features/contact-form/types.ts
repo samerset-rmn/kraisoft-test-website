@@ -28,6 +28,7 @@ export interface IFormFieldProps extends Pick<UseControllerReturn, 'field'> {
   placeholder?: string;
   type: TFormFieldType;
   isError: boolean;
+  testId: string;
 }
 
 export type TFormFieldType = 'text' | 'email' | 'textarea';

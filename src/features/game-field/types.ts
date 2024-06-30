@@ -30,4 +30,5 @@ export interface IGameFieldControlButtonProps {
   onClick: () => void;
   icon: string;
   label: string;
+  testId: string;
 }

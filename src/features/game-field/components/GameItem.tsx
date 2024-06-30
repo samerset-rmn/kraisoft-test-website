@@ -16,7 +16,7 @@ export const GameItem = forwardRef<HTMLDivElement, IGameItemProps>(
     };
 
     return (
-      <div className={styles.item} ref={ref} style={style} {...listeners} {...attributes}>
+      <div className={styles.item} ref={ref} style={style} {...listeners} {...attributes} data-testid='game-field-item'>
         <Image src={image.small} alt='' width={GAME_ITEM_SIZE} height={GAME_ITEM_SIZE} />
       </div>
     );

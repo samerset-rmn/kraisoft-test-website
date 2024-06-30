@@ -7,7 +7,11 @@ export const FormFieldWrapper: React.FC<React.PropsWithChildren<IFormFieldWrappe
     <label className={styles.container}>
       <span className={styles.label}>{label}</span>
       {children}
-      {error && <span className={styles.error}>{error}</span>}
+      {error && (
+        <span className={styles.error} data-testid='contact-us-form-field-error'>
+          {error}
+        </span>
+      )}
     </label>
   );
 };

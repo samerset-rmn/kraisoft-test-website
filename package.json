@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "playwright test --config=playwright.config.ts"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.1.0",
@@ -18,6 +19,7 @@
     "react-hook-form": "^7.52.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.45.0",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
@@ -31,6 +33,7 @@
   },
   "pre-push": [
     "lint",
-    "build"
+    "build",
+    "test"
   ]
 }
