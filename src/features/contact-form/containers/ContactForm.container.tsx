@@ -16,7 +16,10 @@ export const ContactFormContainer = () => {
 
   const onFormSubmit = formContext.handleSubmit(async (data) => {
     console.log(data);
+
+    /* Fake request */
     await new Promise((resolve) => setTimeout(resolve, 2000));
+
     formContext.reset();
   });
 
@@ -27,6 +30,7 @@ export const ContactFormContainer = () => {
   return (
     <FormProvider {...formContext}>
       <FormPageLayout onFormSubmit={onFormSubmit}>
+        {/* NOTE I think we could move form fields info into an array and map it here. Maybe that would make it easier to change form content... Maybe not, it's just an overhead. */}
         <FormFieldContainer
           name='name'
           label='Name'
