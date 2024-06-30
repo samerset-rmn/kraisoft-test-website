@@ -1,14 +1,5 @@
 import { useCallback } from 'react';
-/**
- * NOTE Why did I shoose @dnd-kit library? Here is how I made my decision:
- *
- * 1. At first I wanted to use native Drag and Drop browser API, but it has some limitations. For example:
- * doesn't support touch and keyboard events, also doesn't support parent boundary restriction. Many features
- * can be done only with hacks. So I decided to use a library.
- * 2. [react-draggable](https://github.com/react-grid-layout/react-draggable?tab=readme-ov-file)
- */
 import { DndContext, useSensor, MouseSensor, TouchSensor, KeyboardSensor, useSensors } from '@dnd-kit/core';
-import type { DragEndEvent } from '@dnd-kit/core';
 import { restrictToParentElement } from '@dnd-kit/modifiers';
 import Head from 'next/head';
 
@@ -22,10 +13,9 @@ import { IGameFieldProps } from './types';
 const modifiers = [restrictToParentElement];
 /**
  * NOTE Preloading images so user will not see empty item when it's spawned.
- * Sure, next/image supports "priority" prop that does the same thing,
- * but I think here we have a better control, what to preload. For now there are
- * only 4 item types (4 images), but if there are much more then preloading will slow down
- * the page load. With this solution we can later write a logic to preload only the next items, for example.
+ * For now there are only 4 possible item types (4 images), but if there are more then preloading
+ * will start to reduce load time of the page. In that case we can try to preload only few images
+ * and spawn first items with them.
  */
 const itemImagesPreloadTags = GAME_ITEM_TYPES.map(({ image, id }) => <link key={id} rel='preload' as='image' href={image.small} />);
 
@@ -51,23 +41,13 @@ const itemImagesPreloadTags = GAME_ITEM_TYPES.map(({ image, id }) => <link key={
  * finally it's flexible enough for custom logic. For now I'll stick with this library.
  */
 export const GameFieldContainer: React.FC = () => {
-  const { items, spawnItem, saveItemPosition } = useGameFieldItems();
+  const { items, spawnItem } = useGameFieldItems();
 
   const mouseSensor = useSensor(MouseSensor);
   const touchSensor = useSensor(TouchSensor);
   const keyboardSensor = useSensor(KeyboardSensor);
   const sensors = useSensors(mouseSensor, touchSensor, keyboardSensor);
 
-  const onGameItemDragEnd = useCallback(
-    ({ delta, active }: DragEndEvent) => {
-      /**
-       * NOTE ID from DragEndEvent is not a generic, sp it's always string | number.
-       * I cast type because we know that our ID is a string.
-       */
-      saveItemPosition({ id: active.id as string, delta });
-    },
-    [saveItemPosition]
-  );
   const onGameFieldClick = useCallback<IGameFieldProps['onClick']>(
     (cursorPosition) => {
       spawnItem(cursorPosition);
@@ -75,13 +55,15 @@ export const GameFieldContainer: React.FC = () => {
     [spawnItem]
   );
 
+  console.log(items);
+
   return (
     <>
       <Head>{itemImagesPreloadTags}</Head>
-      <DndContext sensors={sensors} modifiers={modifiers} onDragEnd={onGameItemDragEnd}>
+      <DndContext sensors={sensors} modifiers={modifiers}>
         <GameField onClick={onGameFieldClick}>
           {Object.values(items).map((item) => (
-            <GameItemContainer {...item} key={item.id} />
+            <GameItemContainer key={item.id} id={item.id} defaultPosition={item.defaultPosition} image={item.image} />
           ))}
         </GameField>
       </DndContext>

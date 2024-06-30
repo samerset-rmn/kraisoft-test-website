@@ -3,8 +3,8 @@ export interface IGameItem {
   id: string;
   /** Item image */
   image: IGameItemImage;
-  /** Item position */
-  position: IGameItemPosition;
+  /** Item default position  */
+  defaultPosition: IGameItemPosition;
 }
 
 export interface IGameItemPosition {

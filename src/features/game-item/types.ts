@@ -1,7 +1,7 @@
 import type { Transform } from '@dnd-kit/utilities';
 import type { DraggableSyntheticListeners, DraggableAttributes } from '@dnd-kit/core';
 
-import { IGameItem } from '@/types/gameItem';
+import { IGameItem, IGameItemPosition } from '@/types/gameItem';
 
 export interface IGameItemContainerProps extends IGameItem {}
 
@@ -14,4 +14,6 @@ export interface IGameItemProps extends IGameItem {
   attributes: DraggableAttributes;
   /** Is item being dragged? */
   isDragging: boolean;
+  /** Item current position */
+  currentPosition: IGameItemPosition;
 }

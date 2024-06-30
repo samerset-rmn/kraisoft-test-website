@@ -1,5 +1,4 @@
 import { useCallback, useState } from 'react';
-import type { Coordinates } from '@dnd-kit/utilities';
 
 import { IGameItemPosition } from '@/types/gameItem';
 import { GAME_ITEM_TYPES, GAME_ITEM_SIZE } from '@/constants/gameItem';
@@ -32,34 +31,16 @@ export const useGameFieldItems = () => {
         [newItemUniqueId]: {
           ...randomItem,
           id: newItemUniqueId,
-          position: {
+          defaultPosition: {
             /* NOTE clientY includes page header's height, subtract it */
             top: clickPosition.top - PAGE_HEADER_HEIGHT - GAME_ITEM_SIZE / 2,
-            /* NOTE Use GAME_ITEM_SIZE to spawn an item right at the center of the cursor */
+            /* NOTE subtract GAME_ITEM_SIZE to spawn an item right at the center of the cursor */
             left: clickPosition.left - GAME_ITEM_SIZE / 2
           }
         }
-      };
+      } satisfies TGameFieldCreatedItem;
     });
   }, []);
 
-  /** Save item static position */
-  const saveItemPosition = useCallback((params: { id: string; delta: Coordinates }) => {
-    setItems((prevItems) => {
-      const item = prevItems[params.id];
-
-      return {
-        ...prevItems,
-        [params.id]: {
-          ...item,
-          position: {
-            top: item.position.top + params.delta.y,
-            left: item.position.left + params.delta.x
-          }
-        }
-      };
-    });
-  }, []);
-
-  return { items, spawnItem, saveItemPosition };
+  return { items, spawnItem };
 };

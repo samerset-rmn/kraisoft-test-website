@@ -8,28 +8,28 @@ export const GAME_ITEM_TYPES: IGameItem[] = [
     image: {
       small: `${SITE_BASE_PATH}/game-item/moon.webp`
     },
-    position: { top: 0, left: 0 }
+    defaultPosition: { top: 0, left: 0 }
   },
   {
     id: 'mountain',
     image: {
       small: `${SITE_BASE_PATH}/game-item/mountain.webp`
     },
-    position: { top: 0, left: 0 }
+    defaultPosition: { top: 0, left: 0 }
   },
   {
     id: 'sunset',
     image: {
       small: `${SITE_BASE_PATH}/game-item/sunset.webp`
     },
-    position: { top: 0, left: 0 }
+    defaultPosition: { top: 0, left: 0 }
   },
   {
     id: 'vase',
     image: {
       small: `${SITE_BASE_PATH}/game-item/vase.webp`
     },
-    position: { top: 0, left: 0 }
+    defaultPosition: { top: 0, left: 0 }
   }
 ];
 
