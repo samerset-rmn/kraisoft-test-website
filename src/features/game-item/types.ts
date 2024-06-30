@@ -12,8 +12,8 @@ export interface IGameItemProps extends IGameItem {
   listeners: DraggableSyntheticListeners;
   /** dnd-kit item attributes */
   attributes: DraggableAttributes;
-  /** Is item being dragged? */
-  isDragging: boolean;
+  /** Is this the last active (dragged) item? */
+  isLastActive: boolean;
   /** Item current position */
   currentPosition: IGameItemPosition;
 }

@@ -7,10 +7,10 @@ import { GAME_ITEM_SIZE } from '@/constants/gameItem';
 import styles from './styles.module.scss';
 
 export const GameItem = forwardRef<HTMLDivElement, IGameItemProps>(
-  ({ currentPosition, isDragging, transform, listeners, attributes, image }, ref) => {
+  ({ currentPosition, isLastActive, transform, listeners, attributes, image }, ref) => {
     const style: React.CSSProperties = {
       transform: transform ? `translate3d(${transform.x}px, ${transform.y}px, 0)` : undefined,
-      zIndex: isDragging ? 2 : 1,
+      zIndex: isLastActive ? 2 : 1,
       top: currentPosition.top,
       left: currentPosition.left
     };

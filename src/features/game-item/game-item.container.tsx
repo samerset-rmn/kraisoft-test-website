@@ -11,7 +11,7 @@ import { GameItem } from './game-item';
  * NOTE memo is used to prevent unnecessary re-renders when spawning new items.
  */
 export const GameItemContainer: React.FC<IGameItemContainerProps> = memo(({ id, ...props }) => {
-  const { attributes, listeners, setNodeRef, transform, isDragging } = useDraggable({ id });
+  const { attributes, listeners, setNodeRef, transform } = useDraggable({ id });
   /**
    * NOTE I moved the current position from the parent "game-field" into this component. At first this position was stored
    * inside the `items` object, but this caused significant re-rendering of all items when one of them was moved.
@@ -19,8 +19,15 @@ export const GameItemContainer: React.FC<IGameItemContainerProps> = memo(({ id, 
    * but significant re-rendering will only happen to the dragged item (other items just get a quick re-render).
    */
   const [currentPosition, setCurrentPosition] = useState<IGameItemPosition>(props.defaultPosition);
+  /**
+   * NOTE Saving last active item so we can set the correct z-index.
+   */
+  const [isLastActive, setIsLastActive] = useState<boolean>(false);
 
   useDndMonitor({
+    onDragStart: ({ active }) => {
+      setIsLastActive(active.id === id);
+    },
     onDragEnd: ({ delta, active }) => {
       if (active.id === id) {
         setCurrentPosition((prev) => ({
@@ -40,7 +47,7 @@ export const GameItemContainer: React.FC<IGameItemContainerProps> = memo(({ id, 
       transform={transform}
       listeners={listeners}
       attributes={attributes}
-      isDragging={isDragging}
+      isLastActive={isLastActive}
     />
   );
 });
