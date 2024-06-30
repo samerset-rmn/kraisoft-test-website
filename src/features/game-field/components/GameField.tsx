@@ -21,6 +21,7 @@ export const GameField = forwardRef<HTMLDivElement, React.PropsWithChildren<IGam
           onClick({ top: e.clientY, left: e.clientX });
         }
       }}>
+        <h1 className={styles.title}>game.play – website where you can create and drag different items!</h1>
       {children}
     </div>
   );
