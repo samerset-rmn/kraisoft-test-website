@@ -1,9 +1,9 @@
 import { forwardRef } from 'react';
 
-import { IGameFieldProps } from './types';
-import { GAME_FIELD_ID } from './constants';
+import { IGameFieldProps } from '../types';
+import { GAME_FIELD_ID } from '../constants';
 
-import styles from './styles.module.scss';
+import styles from '../styles/GameField.module.scss';
 
 export const GameField = forwardRef<HTMLDivElement, React.PropsWithChildren<IGameFieldProps>>(({ children, onClick }, ref) => {
   return (

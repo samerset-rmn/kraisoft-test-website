@@ -1,10 +1,10 @@
 import { forwardRef } from 'react';
 import Image from 'next/image';
 
-import { IGameItemProps } from './types';
-import { GAME_ITEM_SIZE } from '@/constants/gameItem';
+import { IGameItemProps } from '../types';
+import { GAME_ITEM_SIZE } from '@/shared/constants/gameItem';
 
-import styles from './styles.module.scss';
+import styles from '../styles/GameItem.module.scss';
 
 export const GameItem = forwardRef<HTMLDivElement, IGameItemProps>(
   ({ currentPosition, isLastActive, transform, listeners, attributes, image }, ref) => {

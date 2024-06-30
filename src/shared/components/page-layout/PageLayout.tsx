@@ -1,10 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { SITE_BASE_PATH } from '@/constants/basePath';
-import { PAGE_HEADER_HEIGHT } from '@/constants/pageHeader';
+import { SITE_BASE_PATH } from '@/shared/constants/basePath';
+import { PAGE_HEADER_HEIGHT } from '@/shared/constants/pageHeader';
 
-import styles from './styles.module.scss';
+import styles from './PageLayout.module.scss';
 
 /**
  * Base layout of page

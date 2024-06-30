@@ -1,5 +1,5 @@
 import { SITE_BASE_PATH } from './basePath';
-import { IGameItem } from '@/types/gameItem';
+import { IGameItem } from '@/shared/types/gameItem';
 
 /** Types of items that can be spawned on the game field */
 export const GAME_ITEM_TYPES: IGameItem[] = [

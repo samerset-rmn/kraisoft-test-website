@@ -1,10 +1,10 @@
 import { useDndMonitor, useDraggable } from '@dnd-kit/core';
 import { memo, useEffect, useState } from 'react';
 
-import { IGameItemPosition } from '@/types/gameItem';
-import { IGameItemContainerProps } from './types';
-import { GameItem } from './game-item';
-import { GAME_ITEM_SIZE } from '@/constants/gameItem';
+import { IGameItemPosition } from '@/shared/types/gameItem';
+import { IGameItemContainerProps } from '../types';
+import { GameItem } from '../components/GameItem';
+import { GAME_ITEM_SIZE } from '@/shared/constants/gameItem';
 
 /**
  * Draggable item for the game field

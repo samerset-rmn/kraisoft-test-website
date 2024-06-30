@@ -3,11 +3,11 @@ import { DndContext, useSensor, MouseSensor, TouchSensor, KeyboardSensor, useSen
 import { restrictToParentElement } from '@dnd-kit/modifiers';
 import Head from 'next/head';
 
-import { GameField } from './game-field';
-import { GameItemContainer } from '../game-item/game-item.container';
-import { GAME_ITEM_TYPES } from '@/constants/gameItem';
-import { useGameFieldItems, useFieldResizeHandler } from './hooks';
-import { IGameFieldProps } from './types';
+import { GameField } from '../components/GameField';
+import { GameItemContainer } from '../containers/GameItem.container';
+import { GAME_ITEM_TYPES } from '@/shared/constants/gameItem';
+import { useGameFieldItems, useFieldResizeHandler } from '../hooks';
+import { IGameFieldProps } from '../types';
 
 /** NOTE dnd-kit way to prevent item from being dragged out of parent's boundary */
 const modifiers = [restrictToParentElement];

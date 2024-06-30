@@ -1,8 +1,8 @@
 import { useCallback, useState } from 'react';
 
-import { IGameItemPosition } from '@/types/gameItem';
-import { GAME_ITEM_TYPES, GAME_ITEM_SIZE } from '@/constants/gameItem';
-import { PAGE_HEADER_HEIGHT } from '@/constants/pageHeader';
+import { IGameItemPosition } from '@/shared/types/gameItem';
+import { GAME_ITEM_TYPES, GAME_ITEM_SIZE } from '@/shared/constants/gameItem';
+import { PAGE_HEADER_HEIGHT } from '@/shared/constants/pageHeader';
 import { TGameFieldCreatedItem } from '../types';
 
 /**

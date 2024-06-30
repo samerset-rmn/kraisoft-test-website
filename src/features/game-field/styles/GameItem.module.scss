@@ -23,6 +23,6 @@
   transform: translate(0, 0);
   animation: appearing 0.25s ease; // NOTE In Safari, the image of an item **sometimes** doesn't appear until animation is complete. I haven't figured out why yet.
 
-  /* NOTE Possible optiomization, but top/left properties only change after dragging, so probably not a big deal (disabled) */
+  /* NOTE Possible optiomization, but top/left properties only change after dragging and on game field resize, so probably not a big deal (disabled) */
   // will-change: top, left;
 }
