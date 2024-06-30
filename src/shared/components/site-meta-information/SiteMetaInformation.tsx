@@ -34,6 +34,7 @@ export const SiteMetaInformation: React.FC<{ pageTitle: string }> = ({ pageTitle
   return (
     <Head>
       <title>{pageTitle + ' – game.play'}</title>
+      <meta name='description' content='game.play – website where you can create and drag different items!' />
       {faviconList.map(({ rel, type, sizes, href }) => (
         <link key={`${href}-${sizes}`} rel={rel} type={type} sizes={sizes} href={href} />
       ))}
