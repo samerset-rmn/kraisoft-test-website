@@ -1,7 +1,7 @@
 import { useController, useFormContext } from 'react-hook-form';
 
 import { IFormFieldContainerProps } from '../types';
-import { FORM_FIELDS_MAP } from '../constants';
+import { FORM_FIELDS_INPUT_MODE_MAP, FORM_FIELDS_MAP } from '../constants';
 import { FormFieldWrapper } from '../components';
 
 /**
@@ -17,10 +17,18 @@ export const FormFieldContainer: React.FC<IFormFieldContainerProps> = ({ name, l
   });
 
   const Input = FORM_FIELDS_MAP[type];
+  const inputMode = FORM_FIELDS_INPUT_MODE_MAP[type];
 
   return (
     <FormFieldWrapper label={label} error={fieldState.error?.message}>
-      <Input field={field} type={type} placeholder={placeholder} isError={!!fieldState.error?.message} testId={`contact-us-form-${name}-field`} />
+      <Input
+        field={field}
+        type={type}
+        placeholder={placeholder}
+        isError={!!fieldState.error?.message}
+        testId={`contact-us-form-${name}-field`}
+        inputMode={inputMode}
+      />
     </FormFieldWrapper>
   );
 };

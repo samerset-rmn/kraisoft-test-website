@@ -29,9 +29,12 @@ export interface IFormFieldProps extends Pick<UseControllerReturn, 'field'> {
   type: TFormFieldType;
   isError: boolean;
   testId: string;
+  inputMode: TFormFieldInputModeType;
 }
 
 export type TFormFieldType = 'text' | 'email' | 'textarea';
+
+export type TFormFieldInputModeType = React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>['inputMode'];
 
 export interface IFormSubmitButtonProps {
   isFormSubmitting: boolean;
