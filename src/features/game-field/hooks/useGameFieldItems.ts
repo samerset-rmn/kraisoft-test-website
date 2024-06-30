@@ -11,9 +11,18 @@ import { TGameFieldCreatedItem } from '../types';
 export const useGameFieldItems = () => {
   /**
    * NOTE Some thoughts about the implementation:
-   * At first I used array, but that way I had to iterate over all items to find the one I need to update.
-   * To update an item I had to remove it from the array and place it back with updated position.
-   * I think it's not efficient, especially when there are many items. So I decided to use an object with unique keys.
+   *
+   * At first I used an array to store items and updated the position of the items here. 
+   * That way I had to iterate over all the items to find the one I needed to update. 
+   * To update an item I had to remove it from the array and put it back with updated position.
+   *
+   * Then I switched to using objects with unique keys. It's more efficient to find an item by key and update it.
+   * But later I moved the item's position state to the GameItemContainer, so when an item's position is updated,
+   * other items are not affected (or at least not too much).
+   *
+   * Now I'm thinking about using array again. For spawning items, there's not much difference between array and object,
+   * but maybe array will be even more efficient. Right now we have to do `Object.values(items)` before mapping items,
+   * this can be a performance bottleneck.
    */
   const [items, setItems] = useState<TGameFieldCreatedItem>({});
 
