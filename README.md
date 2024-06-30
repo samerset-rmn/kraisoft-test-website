@@ -59,7 +59,7 @@ At first I wanted to use native [Drag and Drop browser API](https://developer.mo
 
 Forms are a common part of the web that have to be implemented in a good way. We need to consider form validation (we can't trust HTML validation), error handling, submit handling, form state management etc. Doing it from scratch can be a time consuming task. So I decided to use a library for that.
 
-My favorite library for this so far is [react-hook-form](https://react-hook-form.com/). Unlike Formik, it has a smaller bundle size, is actively maintained and has a good documentation. It may have some problems with complex forms (e.g. multi step one) that require some additional logic, but for simple forms it's a good choice.
+My favorite library for this so far is [react-hook-form](https://react-hook-form.com/). Unlike Formik, it has a smaller bundle size, a better performance, is actively maintained and has a good documentation. It may have some problems with complex forms (e.g. multi step one) that require some additional logic, but for simple forms it's a good choice.
 
 ## Additional project features (not required by the task)
 
