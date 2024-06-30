@@ -1,11 +1,11 @@
 @keyframes appearing {
   from {
     opacity: 0;
-    transform: translate(-50vw, -50vh);
+    transform: translate3d(-50vw, -50vh, 0);
   }
   to {
     opacity: 1;
-    transform: translate(0, 0);
+    transform: translate3d(0, 0, 0);
   }
 }
 
@@ -20,9 +20,9 @@
   user-select: none;
   /* NOTE The main trick is to not use "forwards" keyword ("forwards" blocks future transforms). Animation plays and we still can change "transform" later. */
   opacity: 1;
-  transform: translate(0, 0);
+  transform: translate3d(0, 0, 0);
   animation: appearing 0.25s ease; // NOTE In Safari, the image of an item **sometimes** doesn't appear until animation is complete. I haven't figured out why yet.
 
-  /* NOTE Possible optiomization, but top/left properties only change after dragging and on game field resize, so probably not a big deal (disabled) */
+  /* NOTE Possible optiomization, but MDN advices "It should not be used to anticipate performance problems.". For now we don't need this. */
   // will-change: top, left;
 }
