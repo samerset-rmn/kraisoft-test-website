@@ -5,7 +5,9 @@ import { GAME_ITEM_TYPES, GAME_ITEM_SIZE } from '@/constants/gameItem';
 import { PAGE_HEADER_HEIGHT } from '@/constants/pageHeader';
 import { TGameFieldCreatedItem } from '../types';
 
-/** Hook to store game field' items and spawn a new one */
+/**
+ * Hook to store game field' items and spawn a new one
+ */
 export const useGameFieldItems = () => {
   /**
    * NOTE Some thoughts about the implementation:

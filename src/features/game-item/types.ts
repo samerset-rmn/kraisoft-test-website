@@ -3,7 +3,9 @@ import type { DraggableSyntheticListeners, DraggableAttributes } from '@dnd-kit/
 
 import { IGameItem, IGameItemPosition } from '@/types/gameItem';
 
-export interface IGameItemContainerProps extends IGameItem {}
+export interface IGameItemContainerProps extends IGameItem {
+  gameFieldSize: { width: number; height: number };
+}
 
 export interface IGameItemProps extends IGameItem {
   /** Item position during dragging */

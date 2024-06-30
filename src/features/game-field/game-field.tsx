@@ -1,11 +1,14 @@
+import { forwardRef } from 'react';
+
 import { IGameFieldProps } from './types';
 import { GAME_FIELD_ID } from './constants';
 
 import styles from './styles.module.scss';
 
-export const GameField: React.FC<React.PropsWithChildren<IGameFieldProps>> = ({ children, onClick }) => {
+export const GameField = forwardRef<HTMLDivElement, React.PropsWithChildren<IGameFieldProps>>(({ children, onClick }, ref) => {
   return (
     <div
+      ref={ref}
       id={GAME_FIELD_ID}
       className={styles.container}
       onClick={(e) => {
@@ -21,4 +24,6 @@ export const GameField: React.FC<React.PropsWithChildren<IGameFieldProps>> = ({ 
       {children}
     </div>
   );
-};
+});
+
+GameField.displayName = 'GameField';

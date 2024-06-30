@@ -6,7 +6,7 @@ import Head from 'next/head';
 import { GameField } from './game-field';
 import { GameItemContainer } from '../game-item/game-item.container';
 import { GAME_ITEM_TYPES } from '@/constants/gameItem';
-import { useGameFieldItems } from './hooks/useGameFieldItems';
+import { useGameFieldItems, useFieldResizeHandler } from './hooks';
 import { IGameFieldProps } from './types';
 
 /** NOTE dnd-kit way to prevent item from being dragged out of parent's boundary */
@@ -42,6 +42,7 @@ const itemImagesPreloadTags = GAME_ITEM_TYPES.map(({ image, id }) => <link key={
  */
 export const GameFieldContainer: React.FC = () => {
   const { items, spawnItem } = useGameFieldItems();
+  const { gameFieldRef, gameFieldSize } = useFieldResizeHandler();
 
   const mouseSensor = useSensor(MouseSensor);
   const touchSensor = useSensor(TouchSensor);
@@ -59,9 +60,9 @@ export const GameFieldContainer: React.FC = () => {
     <>
       <Head>{itemImagesPreloadTags}</Head>
       <DndContext sensors={sensors} modifiers={modifiers}>
-        <GameField onClick={onGameFieldClick}>
+        <GameField ref={gameFieldRef} onClick={onGameFieldClick}>
           {Object.values(items).map((item) => (
-            <GameItemContainer key={item.id} {...item} />
+            <GameItemContainer key={item.id} {...item} gameFieldSize={gameFieldSize} />
           ))}
         </GameField>
       </DndContext>
