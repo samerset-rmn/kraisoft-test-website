@@ -1,3 +1,10 @@
+@mixin reset-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
 /* NOTE Hide element from screen but keep it available for SEO and accessibility tools */
 @mixin visually-hidden {
   position: absolute !important;

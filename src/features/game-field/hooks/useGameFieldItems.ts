@@ -44,5 +44,10 @@ export const useGameFieldItems = () => {
     });
   }, []);
 
-  return { items, spawnItem };
+  /** Clear all spawned items */
+  const clearItems = useCallback(() => {
+    setItems({});
+  }, []);
+
+  return { items, spawnItem, clearItems };
 };

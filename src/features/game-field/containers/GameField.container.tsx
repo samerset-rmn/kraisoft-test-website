@@ -3,11 +3,12 @@ import { DndContext, useSensor, MouseSensor, TouchSensor, KeyboardSensor, useSen
 import { restrictToParentElement } from '@dnd-kit/modifiers';
 import Head from 'next/head';
 
-import { GameField } from '../components/GameField';
+import { GameField, GameFieldControlsWrapper, GameFieldControlButton } from '../components';
 import { GameItemContainer } from '../containers/GameItem.container';
 import { GAME_ITEM_TYPES } from '@/shared/constants/gameItem';
 import { useGameFieldItems, useFieldResizeHandler } from '../hooks';
 import { IGameFieldProps } from '../types';
+import { SITE_BASE_PATH } from '@/shared/constants/basePath';
 
 /** NOTE dnd-kit way to prevent item from being dragged out of parent's boundary */
 const modifiers = [restrictToParentElement];
@@ -41,7 +42,7 @@ const itemImagesPreloadTags = GAME_ITEM_TYPES.map(({ image, id }) => <link key={
  * finally it's flexible enough for custom logic. For now I'll stick with this library.
  */
 export const GameFieldContainer: React.FC = () => {
-  const { items, spawnItem } = useGameFieldItems();
+  const { items, spawnItem, clearItems } = useGameFieldItems();
   const { gameFieldRef, gameFieldSize } = useFieldResizeHandler();
 
   const mouseSensor = useSensor(MouseSensor);
@@ -61,6 +62,11 @@ export const GameFieldContainer: React.FC = () => {
       <Head>{itemImagesPreloadTags}</Head>
       <DndContext sensors={sensors} modifiers={modifiers}>
         <GameField ref={gameFieldRef} onClick={onGameFieldClick}>
+          {/* NOTE Place controls in front of game items so that users can access them more quickly using the keyboard (without having to tab on each spawn item) */}
+          <GameFieldControlsWrapper>
+            <GameFieldControlButton label='Clear all items' onClick={clearItems} icon={`${SITE_BASE_PATH}/refresh.svg`} />
+          </GameFieldControlsWrapper>
+
           {Object.values(items).map((item) => (
             <GameItemContainer key={item.id} {...item} gameFieldSize={gameFieldSize} />
           ))}

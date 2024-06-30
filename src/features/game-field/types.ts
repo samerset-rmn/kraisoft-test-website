@@ -25,3 +25,9 @@ export interface IGameItemProps extends IGameItem {
   /** Item current position */
   currentPosition: IGameItemPosition;
 }
+
+export interface IGameFieldControlButtonProps {
+  onClick: () => void;
+  icon: string;
+  label: string;
+}
