@@ -31,19 +31,12 @@ export const GameItemContainer: React.FC<IGameItemContainerProps> = memo(({ id, 
     const isItemOutOfFieldHeight = gameFieldSize.height - GAME_ITEM_SIZE < currentPosition.top;
 
     /**
-     * NOTE I split it into two if statements to avoid unnecessary state changes.
-     * We could always call setCurrentPosition here with a minimal size value,
-     * but it will be fired on every resize, even if the item is not close to the edges of the game field.
+     * NOTE Hiding state change under if statement so it won't be fired until the item really goes out of the game field.
      */
-    if (isItemOutOfFieldWidth) {
+    if (isItemOutOfFieldWidth || isItemOutOfFieldHeight) {
       setCurrentPosition((prev) => ({
-        top: prev.top,
-        left: gameFieldSize.width - GAME_ITEM_SIZE
-      }));
-    } else if (isItemOutOfFieldHeight) {
-      setCurrentPosition((prev) => ({
-        top: gameFieldSize.height - GAME_ITEM_SIZE,
-        left: prev.left
+        top: isItemOutOfFieldHeight ? gameFieldSize.height - GAME_ITEM_SIZE : prev.top,
+        left: isItemOutOfFieldWidth ? gameFieldSize.width - GAME_ITEM_SIZE : prev.left
       }));
     }
   }, [gameFieldSize, currentPosition]);

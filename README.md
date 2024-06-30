@@ -77,7 +77,7 @@ For linting I'm using ESLint with TypeScript config. One more tool that helps to
 
 ### Playwright
 
-Playwright is an end-to-end testing tool. This means that it can open a browser, navigate to a page, interact with it, and check the results. It's a good way to test the whole application and make sure everything works as expected. I wrote some tests for the main features of the website. 
+Playwright is an end-to-end testing tool. This means that it can open a browser, navigate to a page, interact with it, and check the results. It's a good way to test the whole application and make sure everything works as expected. I wrote few tests for the main features of the website. 
 
 I didn't enable code coverage because it's not necessary for this project. I also didn't add unit tests, but it's not a problem to add them.
 
