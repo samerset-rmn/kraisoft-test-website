@@ -1,0 +1,38 @@
+@use '../../../shared/styles/variables';
+
+/* NOTE I've decided to make auto grow textarea. I used my favourite CSS trick for that: https://chriscoyier.net/2023/09/29/css-solves-auto-expanding-textareas-probably-eventually/ */
+.textarea_wrapper {
+  display: grid;
+  width: 100%;
+
+  &::after,
+  & .textarea {
+    grid-area: 1 / 1 / 2 / 2;
+    border: 1px solid #d1d1d1;
+    border-radius: 4px;
+    padding: 12px 14px;
+    word-break: break-word;
+  }
+
+  &::after {
+    content: attr(data-replicated-value) ' ';
+    white-space: pre-wrap;
+    visibility: hidden;
+  }
+}
+
+.textarea {
+  width: 100%;
+  resize: none;
+  overflow: hidden;
+  transition: background-color 0.1s ease;
+
+  &:hover,
+  &:focus {
+    border-color: variables.$accent_color;
+  }
+
+  &.invalid {
+    border-color: rgb(253, 70, 70);
+  }
+}
