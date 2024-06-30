@@ -3,11 +3,12 @@
 Web site for a test assignment in Kraisoft. Contains a page with a simple game and a feedback form page.
 
 - [Getting started](#getting-started)
+- [Project structure](#project-structure)
 - [Implementation details](#implementation-details)
   - [Game field](#game-field)
   - [Contact us form](#contact-us-form)
 - [Additional project features (not required by the task)](#additional-project-features-not-required-by-the-task)
-  - [Project structure](#project-structure)
+  - [Components separation](#components-separation)
   - [TypeScript](#typescript)
   - [ESLint](#eslint)
   - [Playwright](#playwright)
@@ -21,6 +22,16 @@ Web site for a test assignment in Kraisoft. Contains a page with a simple game a
 4. Open the site at `http://localhost:3000/kraisoft-test-website`
 
 Or you can just open the deployed site by the link: [https://samerset-rmn.github.io/kraisoft-test-website/](https://samerset-rmn.github.io/kraisoft-test-website/).
+
+## Project structure
+
+* **playwright** – Playwright tests
+* **public** – static files
+* **src** - project main codebase
+  * **declarations** – TypeScript declarations
+  * **features** - feature folders. Each feature has its own folder with components, hooks, styles etc. I prefer this approuch because it makes navigating in the codebase easier. We know that each feature contains all the necessary code in one place.
+  * **pages** – Nextjs pages
+  * **shared** - shared components, hooks, utils etc. Can be used anywhere in the project.
 
 ## Implementation details
 
@@ -52,21 +63,13 @@ My favorite library for this so far is [react-hook-form](https://react-hook-form
 
 ## Additional project features (not required by the task)
 
-### Project structure
+### Components separation
 
 I divide components into "dumb" and "smart" ones. "Dumb" components are just presentational components that don't have any logic, only markup and styles. "Smart" components are containers that have logic and pass it to "dumb" components. This approach was introduced by Dan Abramov a long time ago in his [blog post](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0). Its main idea is to separate concerns and make components more reusable.
 
-* **playwright** – Playwright tests
-* **public** – static files
-* **src** - project main codebase
-  * **declarations** – TypeScript declarations
-  * **features** - feature folders. Each feature has its own folder with components, hooks, utils etc. I prefer this approuch because it makes navigating in the codebase easier. We know that each feature contains all the necessary code in one place.
-  * **pages** – Nextjs pages
-  * **shared** - shared components, hooks, utils etc. Can be used anywhere in the project.
-
 ### TypeScript
 
-I'm using TypeScript in the project. It helps to catch errors at compile time, makes code more readable and maintainable. For me TypeScript makes writing code much faster because of autocompletion and type checking. Overall it's just good.
+I'm using TypeScript in the project. It helps to catch errors at compile time, makes code more readable and maintainable. For me TypeScript makes writing code much easier because of autocompletion and type checking. Overall it's just good.
 
 ### ESLint
 
