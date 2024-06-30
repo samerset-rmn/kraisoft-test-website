@@ -77,9 +77,11 @@ For linting I'm using ESLint with TypeScript config. One more tool that helps to
 
 ### Playwright
 
-Playwright is an end-to-end testing tool. This means that it can open a browser, navigate to a page, interact with it, and check the results. It's a good way to test the whole application and make sure everything works as expected. I wrote few tests for the main features of the website. 
+[Playwright](https://github.com/microsoft/playwright) is an end-to-end testing tool developed by Microsoft. E2E tests open a real browser, navigate to a page, interact with it, and check the results. It's a good way to test the whole application with real user scenarios and make sure everything works as expected. I wrote some tests for the main features of the website ([/playwright/tests](playwright/tests)). 
 
-I didn't enable code coverage because it's not necessary for this project. I also didn't add unit tests, but it's not a problem to add them.
+If code coverage is needed, Playwright is very useful because even one test can cover a lot of code. It's not necessary for this project, so I didn't add it. I also didn't add unit tests, but it's not hard to do if needed.
+
+There is another tool for e2e testing - [Cypress](https://github.com/cypress-io/cypress). It's a good thing too, but it loses significantly to Playwright in terms of performance. Playwright tests run twice and even faster than Cypress tests.
 
 ### Pre-push
 
