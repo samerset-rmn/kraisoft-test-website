@@ -40,7 +40,7 @@
       font-size: 12px;
 
       &:hover,
-      &:focus {
+      &:focus-visible {
         color: variables.$accent_color;
       }
     }
@@ -97,7 +97,7 @@
       font-size: 16px;
 
       &:hover,
-      &:focus {
+      &:focus-visible {
         color: variables.$accent_color;
       }
     }

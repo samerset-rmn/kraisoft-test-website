@@ -9,7 +9,7 @@
   transition: background-color 0.1s ease;
 
   &:hover,
-  &:focus {
+  &:focus-visible {
     border-color: variables.$accent_color;
   }
 
