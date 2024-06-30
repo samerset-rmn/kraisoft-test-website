@@ -6,7 +6,7 @@ import { IGameItemPosition, IGameItem } from '@/shared/types/gameItem';
 export type TGameFieldCreatedItem = Record<string, IGameItem>;
 
 export type IGameFieldProps = {
-  onClick: (cursorPosition: IGameItemPosition) => void;
+  onClick: (event: React.MouseEvent<HTMLDivElement>) => void;
 };
 
 export interface IGameItemContainerProps extends IGameItem {

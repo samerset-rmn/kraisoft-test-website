@@ -7,8 +7,8 @@ import { GameField, GameFieldControlsWrapper, GameFieldControlButton } from '../
 import { GameItemContainer } from '../containers/GameItem.container';
 import { GAME_ITEM_TYPES } from '@/shared/constants/gameItem';
 import { useGameFieldItems, useFieldResizeHandler } from '../hooks';
-import { IGameFieldProps } from '../types';
 import { SITE_BASE_PATH } from '@/shared/constants/basePath';
+import { GAME_FIELD_ID } from '../constants';
 
 /** NOTE dnd-kit way to prevent item from being dragged out of parent's boundary */
 const modifiers = [restrictToParentElement];
@@ -32,9 +32,16 @@ export const GameFieldContainer: React.FC = () => {
   const keyboardSensor = useSensor(KeyboardSensor);
   const sensors = useSensors(mouseSensor, touchSensor, keyboardSensor);
 
-  const onGameFieldClick = useCallback<IGameFieldProps['onClick']>(
-    (cursorPosition) => {
-      spawnItem(cursorPosition);
+  const onGameFieldClick = useCallback<React.MouseEventHandler<HTMLDivElement>>(
+    (e) => {
+      /**
+       * NOTE Spawn new items only when clicked on an empty space.
+       * But if later we need to react to clicks on any item, this solution should be overwritten.
+       * For current requirements it's enough.
+       */
+      if ((e.target as HTMLDivElement).id === GAME_FIELD_ID) {
+        spawnItem({ top: e.clientY, left: e.clientX });
+      }
     },
     [spawnItem]
   );
