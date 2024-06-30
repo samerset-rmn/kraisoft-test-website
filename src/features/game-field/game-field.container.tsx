@@ -55,15 +55,13 @@ export const GameFieldContainer: React.FC = () => {
     [spawnItem]
   );
 
-  console.log(items);
-
   return (
     <>
       <Head>{itemImagesPreloadTags}</Head>
       <DndContext sensors={sensors} modifiers={modifiers}>
         <GameField onClick={onGameFieldClick}>
           {Object.values(items).map((item) => (
-            <GameItemContainer key={item.id} id={item.id} defaultPosition={item.defaultPosition} image={item.image} />
+            <GameItemContainer key={item.id} {...item} />
           ))}
         </GameField>
       </DndContext>
